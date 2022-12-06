@@ -1,0 +1,66 @@
+version: "3.8"
+
+#Docker Networks
+networks:
+  app-network:
+    driver: bridge
+
+#Volumes
+volumes:
+  dbdata:
+    driver: local
+
+services:
+  # PHP-FPM Service
+  app:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    image: sportissimo/app
+    container_name: sportissimo-app
+    restart: unless-stopped
+    tty: true
+    environment:
+      PHP_IDE_CONFIG: "serverName=sportissimo.loc"
+      XDEBUG_CONFIG: "profiler_enable=1 idekey=PHPSTORM"
+    working_dir: /var/www/src
+    volumes:
+      - ./src:/var/www/src
+      - ./docker/php/conf.d/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
+    networks:
+      - app-network
+
+  # Nginx Service
+  webserver:
+    image: nginx:alpine
+    container_name: sportissimo-nginx
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./src:/var/www/src
+      - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
+    networks:
+      - app-network
+    depends_on:
+      - app
+
+  # Database
+  mariadb:
+    image: mysql
+    container_name: sportissimo-db
+    tty: true
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE:-brands}
+      MYSQL_USER: ${DB_USER:-sportissimo}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-secret}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_DATABASE:-password}
+    restart: always
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./docker/mysql/data:/var/lib/mysql
+    networks:
+      - app-network
