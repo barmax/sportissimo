@@ -8,3 +8,5 @@ search:
 
 services:
 	- App\Router\RouterFactory::createRouter
+
+	brandRepository: App\Repositories\Brand\BrandRepositoryNette(@Nette\Database\Connection)
