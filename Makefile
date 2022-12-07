@@ -1,5 +1,5 @@
 # Containers
-APP_CONTAINER_NAME := aone-cms-core
+APP_CONTAINER_NAME := sportissimo-app
 
 # Command lines
 docker_bin := $(shell command -v docker 2> /dev/null)
