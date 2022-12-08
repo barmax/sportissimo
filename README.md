@@ -17,6 +17,9 @@ Installing local version of the project
 6. Go to the link [http://localhost:8081](http://localhost:8081).
 7. Click the button `Seed the database`.
 
+### Useful commands ###
+`make down-dev` stops all started containers.
+`make shell` goes a command line into the application container.
 
 ### Database ###
 ![ER diagram](brands-er.png)
