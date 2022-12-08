@@ -17,3 +17,4 @@ Installing local version of the project
 6. Create db-table: `make create-table`. 
 7. To run web environment, run command `npm run dev`.
 8. Go to the link [http://localhost:8081](http://localhost:8081).
+9. Click the button `Seed the database`.
