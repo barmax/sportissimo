@@ -71,9 +71,14 @@ class BrandService
         return $this->repository->findAll($paginator, $sort);
     }
 
-    public function read(int $id): ActiveRow
+    public function read(int $id): array
     {
-        return $this->repository->findByPrimary($id);
+        $brand = $this->repository->findByPrimary($id);
+
+        return [
+            'status' => 'success',
+            'data' => $brand->toArray()
+        ];
     }
 
     public function getBrandsCount(): int
