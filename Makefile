@@ -30,7 +30,7 @@ shell: ## Start shell into application container
 	$(docker_bin) exec -ti "$(APP_CONTAINER_NAME)" /bin/bash
 
 create-table:
-	$(docker_bin) exec -ti "$(DB_CONTAINER_NAME)"  mysql --user="sportissimo" --password="secret" --database="brands" --execute="USE brands; CREATE TABLE IF NOT EXISTS brands_test ( id int NOT NULL AUTO_INCREMENT, name varchar(255) NOT NULL,created_at datetime NOT NULL, updated_at datetime DEFAULT NULL, PRIMARY KEY (id), UNIQUE KEY i_name (name));"
+	$(docker_bin) exec -ti "$(DB_CONTAINER_NAME)"  mysql --user="sportissimo" --password="secret" --database="brands" --execute="USE brands; CREATE TABLE IF NOT EXISTS brands ( id int NOT NULL AUTO_INCREMENT, name varchar(255) NOT NULL,created_at datetime NOT NULL, updated_at datetime DEFAULT NULL, PRIMARY KEY (id), UNIQUE KEY i_name (name));"
 
 
 
