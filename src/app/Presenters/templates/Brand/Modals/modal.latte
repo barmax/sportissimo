@@ -1,0 +1,16 @@
+<div id="modal_{$action}" class="modal">
+    <div class="modal-content">
+        <h4>{$action|firstUpper} brand</h4>
+        <br>
+        <div class="input-field col s6">
+            <input placeholder="Name" id="{$action}_brand_name" type="text" class="validate">
+            <label for="{$action}_brand_name">Brand name</label>
+            <span class="helper-text" id="{$action}_brand_name_description">Max length is 255</span>
+            {if $action === 'update'}<input id="update_brand_id" type="hidden">{/if}
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="" class="waves-effect waves-light btn modal-trigger" id="{$action}_brand">{$action|firstUpper}</a>
+        <a href="" class="modal-close waves-effect waves-green btn-flat">Close</a>
+    </div>
+</div>

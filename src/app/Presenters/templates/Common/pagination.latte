@@ -1,0 +1,65 @@
+<div class="row right">
+    <div class="s12">
+        <ul class="pagination">
+            {if $paginator->isFirst() === false}
+                <li>
+                    <a
+                        href="#"
+                        data-page="{$paginator->getPage() - 1}"
+                        class="pagination_page"
+                    >
+                        <i class="material-icons">chevron_left</i>
+                    </a>
+                </li>
+            {/if}
+            {for $i = 1; $i <= $pageCount; $i++}
+                {if $i === $paginator->getPage()}
+                    <li class="active">
+                        <a href="#">{$paginator->getPage()}</a>
+                    </li>
+                {else}
+                    <li class="waves-effect">
+                        <a
+                           href="#"
+                           data-page="{$i}"
+                           class="pagination_page"
+                        >
+                            {$i}
+                        </a>
+                    </li>
+                {/if}
+            {/for}
+            {if $paginator->isLast() === false}
+                <li>
+                    <a
+                        href="#"
+                        data-page="{$paginator->getPage() + 1}"
+                        class="pagination_page"
+                    >
+                        <i class="material-icons">chevron_right</i>
+                    </a>
+                </li>
+            {/if}
+
+        </ul>
+    </div>
+    <div class="s12 right">
+        <ul class="pagination">
+            {foreach $pageSizes as $pageSize}
+                {if $pageSize === $currentPageSize}
+                    <li class="waves-effect active">
+                {else}
+                    <li class="waves-effect">
+                {/if}
+                    <a
+                        href="#"
+                        data-page-size="{$pageSize}"
+                        class="page_size"
+                    >
+                        {$pageSize}
+                    </a>
+                </li>
+            {/foreach}
+        </ul>
+    </div>
+</div>
