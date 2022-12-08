@@ -18,3 +18,12 @@ Installing local version of the project
 7. To run web environment, run command `npm run dev`.
 8. Go to the link [http://localhost:8081](http://localhost:8081).
 9. Click the button `Seed the database`.
+
+
+### Database ###
+![ER diagram](brands-er.png)
+
+`id` AUTO_INCREMENT PRIMARY KEY
+
+`name` UNIQUE KEY
+
