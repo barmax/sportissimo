@@ -9,4 +9,7 @@ search:
 services:
 	- App\Router\RouterFactory::createRouter
 
-	brandRepository: App\Repositories\Brand\BrandRepositoryNette(@Nette\Database\Connection)
+	brandRepository: App\Repositories\Brand\BrandRepositoryExplorer(@Nette\Database\Explorer)
+	brandEntityManager: App\EntityManagers\Brand\BrandEntityManagerExplorer(@Nette\Database\Explorer)
+	brandService: App\Services\Brand\BrandService
+	brandValidator: App\Validators\Brand\BrandValidator
