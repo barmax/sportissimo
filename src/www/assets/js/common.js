@@ -85,7 +85,7 @@ function handlePage()
 function handleCreateAction() {
     $('#create_brand').click(function (e) {
         e.defaultPrevented;
-        const brandName = $('#brand_name');
+        const brandName = $('#create_brand_name');
 
         $.ajax('/brand/create', {
             type: 'POST',
@@ -97,12 +97,12 @@ function handleCreateAction() {
                     location.reload();
                 } else {
                     brandName.addClass('invalid');
-                    $('#brand_name_description').text(data.message)
+                    $('#create_brand_name_description').text(data.message)
                 }
             },
             error: function (errorMessage) {
                 brandName.addClass('invalid');
-                $('#brand_name_description').text(errorMessage)
+                $('#create_brand_name_description').text(errorMessage)
             }
         })
     });
@@ -112,8 +112,8 @@ function handleUpdateAction()
 {
     $('#update_brand').click(function (e) {
         e.defaultPrevented;
-        const brandName = $('#brand_update_name');
-        const brandId = $('#brand_update_id');
+        const brandName = $('#update_brand_name');
+        const brandId = $('#update_brand_id');
 
         $.ajax('/brand/update', {
             type: 'POST',
@@ -126,12 +126,12 @@ function handleUpdateAction()
                     location.reload();
                 } else {
                     brandName.addClass('invalid');
-                    $('#brand_name_update_description').text(data.message)
+                    $('#update_brand_name_description').text(data.message)
                 }
             },
             error: function (errorMessage) {
                 brandName.addClass('invalid');
-                $('#brand_name_description').text(errorMessage)
+                $('#update_brand_name_description').text(errorMessage)
             }
         })
     });
@@ -141,7 +141,7 @@ function handleDeleteAction()
 {
     $('.delete_action').click(function (e) {
         e.defaultPrevented;
-        const id = $(this).attr('delete_id');
+        const id = $(this).attr('data-delete-id');
         const toDelete = confirm('Delete the brand with ID ' + id + '?');
 
         if (toDelete === false) {
@@ -166,18 +166,19 @@ function handleReadAction()
 {
     $('.update_action').click(function (e) {
         e.defaultPrevented;
-        const id = $(this).attr('update_id');
+        const id = $(this).attr('data-update-id');
+
         $.ajax('/brand/read', {
             type: 'POST',
             data: {
                 id: id
             },
             success: function (data) {
-                console.log(data);
-                $('#brand_update_name').val(data.data.name);
-                $('#brand_update_id').val(data.data.id);
+                $('#update_brand_name').val(data.data.name);
+                $('#update_brand_id').val(data.data.id);
             },
             error: function (errorMessage) {
+                console.log(errorMessage)
             }
         })
     });
