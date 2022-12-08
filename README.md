@@ -12,12 +12,10 @@ Installing local version of the project
 1. Clone the repository into your local device: `git clone https://github.com/barmax/sportissimo test_app`.
 2. Go to the project folder: `cd test_app`.
 3. Build containers for the project: `make build-dev`.
-4. Run the project containers: `make recreate-dev`.
-5. Install project dependencies: `make install-dev`.
-6. Create db-table: `make create-table`. 
-7. To run web environment, run command `npm run dev`.
-8. Go to the link [http://localhost:8081](http://localhost:8081).
-9. Click the button `Seed the database`.
+4. Install project dependencies: `make install`.
+5. Create db-table: `make create-table`.
+6. Go to the link [http://localhost:8081](http://localhost:8081).
+7. Click the button `Seed the database`.
 
 
 ### Database ###

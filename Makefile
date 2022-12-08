@@ -8,8 +8,8 @@ docker_compose_bin := $(shell command -v docker-compose 2> /dev/null)
 
 composer_bin := composer
 
-install: recreate ## Install application dependencies into application container
-	$(docker_compose_production) exec -t "$(APP_CONTAINER_NAME)" $(composer_bin) install --ansi --no-dev
+install: recreate-dev ## Install application dependencies into application container
+	$(docker_bin) exec -t "$(APP_CONTAINER_NAME)" $(composer_bin) install --no-interaction --ansi --no-suggest
 
 # Dev commands
 build-dev: ## Sources - build Docker image locally (dev-local)
