@@ -8,7 +8,7 @@ docker_compose_bin := $(shell command -v docker-compose 2> /dev/null)
 
 composer_bin := composer
 
-install: recreate-dev ## Install application dependencies into application container
+install: recreate-dev create-table ## Install application dependencies into application container
 	$(docker_bin) exec -t "$(APP_CONTAINER_NAME)" $(composer_bin) install --no-interaction --ansi --no-suggest
 
 # Dev commands
