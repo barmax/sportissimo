@@ -1,0 +1,7 @@
+parameters:
+
+
+database:
+	dsn: 'mysql:host=mysql;dbname=brands'
+	user: sportissimo
+	password: secret
